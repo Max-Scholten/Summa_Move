@@ -2,22 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Role
- *
- * @property $id
- * @property $rolename
- * @property $created_at
- * @property $updated_at
- *
- * @property User[] $users
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
 class Role extends Model
 {
+    use HasFactory;
 
     protected $perPage = 20;
 
@@ -26,23 +16,23 @@ class Role extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['rolename'];
+    protected $fillable = ['rolename', 'user_id'];
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-//    public function users()
-//    {
-//        return $this->hasMany(User::class, 'id', 'role_id');
-//    }
-
-    public  function  roles(){
-        return $this->hasMany(User::class);
-    }
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(\App\Models\User::class, 'id', 'role_id');
     }
 
 }

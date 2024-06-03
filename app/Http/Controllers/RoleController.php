@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\User; // Add this line
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoleRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+// Rest of your controller code...
 class RoleController extends Controller
 {
     /**
@@ -17,6 +19,7 @@ class RoleController extends Controller
     public function index(Request $request): View
     {
         $roles = Role::paginate();
+
 
         return view('role.index', compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * $roles->perPage());
@@ -28,8 +31,9 @@ class RoleController extends Controller
     public function create(): View
     {
         $role = new Role();
+        $users = User::all(); // Get all users
 
-        return view('role.create', compact('role'));
+        return view('role.create', compact('role', 'users'));
     }
 
     /**
@@ -59,8 +63,9 @@ class RoleController extends Controller
     public function edit($id): View
     {
         $role = Role::find($id);
+        $users = User::all(); // Get all users
 
-        return view('role.edit', compact('role'));
+        return view('role.edit', compact('role','users'));
     }
 
     /**
