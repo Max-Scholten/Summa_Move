@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('exercises_img')->nullable();
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            $table->integer('times_completed')->default(0);
+            $table->integer('times_completed')->default(00);
             $table->timestamps();
         });
     }
