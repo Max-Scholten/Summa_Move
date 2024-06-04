@@ -18,7 +18,6 @@
                             <a type="button" href="{{ route('exercises.index') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Back</a>
                         </div>
                     </div>
-
                     <div class="flow-root">
                         <div class="mt-8 overflow-x-auto">
                             <div class="max-w-xl py-2 align-middle">
@@ -26,6 +25,7 @@
                                     {{ method_field('PATCH') }}
                                     @csrf
                                     @include('exercise.form')
+
                                 </form>
                             </div>
                         </div>
@@ -34,4 +34,5 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>
