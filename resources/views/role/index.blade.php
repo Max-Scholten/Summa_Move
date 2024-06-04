@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-nav-layout xmlns:X-slot="http://www.w3.org/1999/xlink">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Roles') }}
