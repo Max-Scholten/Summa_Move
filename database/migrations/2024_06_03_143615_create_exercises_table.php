@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
-            $table->string('exercises_img')->nullable();
+            $table->string('exercise_photo_url', 2048)->nullable()->default('https://ui-avatars.com/api/?name=John+Doe&color=7F9CF5&background=EBF4FF');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            $table->integer('times_completed')->default(00);
             $table->timestamps();
         });
     }

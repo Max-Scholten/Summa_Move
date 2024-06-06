@@ -23,7 +23,6 @@ class RoleRequest extends FormRequest
     {
         return [
 			'rolename' => 'required|string',
-            'user_id' => 'required',
         ];
     }
 }

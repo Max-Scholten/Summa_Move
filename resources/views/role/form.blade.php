@@ -1,3 +1,4 @@
+
 <div class="space-y-6">
 
     <div>
@@ -5,15 +6,18 @@
         <x-text-input id="rolename" name="rolename" type="text" class="mt-1 block w-full" :value="old('rolename', $role?->rolename)" autocomplete="rolename" placeholder="Rolename"/>
         <x-input-error class="mt-2" :messages="$errors->get('rolename')"/>
     </div>
-    <div>
-        <x-input-label for="user_id" :value="__('User')"/>
-        <select id="user_id" name="user_id" class="mt-1 block w-full">
+    @if(isset($role))
+        <div>
+            <x-input-label for="users" :value="__('Users')"/>
             @foreach($users as $user)
-                <option value="{{ $user->id }}" {{ old('user_id', $role?->user_id) == $user->id ? 'selected' : '' }}>{{ $user->username }}</option>
+                <div>
+                    <input type="checkbox" id="user_{{ $user->id }}" name="users[]" value="{{ $user->id }}" {{ $role->users->contains($user->id) ? 'checked' : '' }}>
+                    <label for="user_{{ $user->id }}">{{ $user->username }}</label>
+                </div>
             @endforeach
-        </select>
-        <x-input-error class="mt-2" :messages="$errors->get('user_id')"/>
-    </div>
+            <x-input-error class="mt-2" :messages="$errors->get('users')"/>
+        </div>
+    @endif
 
     <div class="flex items-center gap-4">
         <x-primary-button>Submit</x-primary-button>
