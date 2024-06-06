@@ -27,11 +27,9 @@
                                     <tr>
                                         <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">No</th>
 
-									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Img Exercise</th>
-									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Exercise Name</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Exercise Photo Url</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Name</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Description</th>
-									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Username</th>
-									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Times Completed</th><th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Times Completed In</th>
 
                                         <th scope="col" class="px-3 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500"></th>
                                     </tr>
@@ -41,30 +39,9 @@
                                         <tr class="even:bg-gray-50">
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-semibold text-gray-900">{{ ++$i }}</td>
 
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exercise->exercises_img }}</td>
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exercise->name }}</td>
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exercise->description }}</td>
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                @if($exercise->user)
-                                                    {{ $exercise->user->username }}
-                                                @else
-                                                    {{ __('Person not found') }}
-                                                @endif
-                                            </td>
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                @if($exercise->completed)
-                                                    {{ $exercise->completed->times_completed }}
-                                                @else
-                                                    {{ __('NULL') }}
-                                                @endif
-                                            </td>
-                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                @if($exercise->completed)
-                                                    {{ $exercise->completed->times_completed_in }}
-                                                @else
-                                                    {{ __('NULL') }}
-                                                @endif
-                                            </td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exercise->exercise_photo_url }}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exercise->name }}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $exercise->description }}</td>
 
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">
                                                 <form action="{{ route('exercises.destroy', $exercise->id) }}" method="POST">

@@ -16,15 +16,7 @@ class ExerciseController extends Controller
      */
     public function index(Request $request): View
     {
-        $roleName = auth()->user()->role ? auth()->user()->role->rolename : 'Student';
-
-        if ($roleName == 'Admin') {
-            // The user is an admin, fetch all exercises along with the users who did them
-            $exercises = Exercise::with('user')->paginate();
-        } else {
-            // The user is a student, fetch only their exercises
-            $exercises = Exercise::where('user_id', auth()->id())->paginate();
-        }
+        $exercises = Exercise::paginate();
 
         return view('exercise.index', compact('exercises'))
             ->with('i', ($request->input('page', 1) - 1) * $exercises->perPage());
@@ -36,9 +28,8 @@ class ExerciseController extends Controller
     public function create(): View
     {
         $exercise = new Exercise();
-        $user = auth()->user(); // Get the currently authenticated user
 
-        return view('exercise.create', compact('exercise', 'user'));
+        return view('exercise.create', compact('exercise'));
     }
 
     /**
@@ -68,9 +59,8 @@ class ExerciseController extends Controller
     public function edit($id): View
     {
         $exercise = Exercise::find($id);
-        $user = auth()->user(); // Get the currently authenticated user
 
-        return view('exercise.edit', compact('exercise', 'user'));
+        return view('exercise.edit', compact('exercise'));
     }
 
     /**

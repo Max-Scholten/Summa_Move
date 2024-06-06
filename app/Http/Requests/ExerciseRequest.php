@@ -22,11 +22,9 @@ class ExerciseRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'exercises_img' => 'string',
+			'exercise_photo_url' => 'string',
 			'name' => 'string',
 			'description' => 'string',
-			'times_completed' => 'required',
-            'user_id' => 'required',
         ];
     }
 }

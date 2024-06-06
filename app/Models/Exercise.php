@@ -4,9 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Exercise
+ *
+ * @property $id
+ * @property $exercise_photo_url
+ * @property $name
+ * @property $description
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Performance[] $performances
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class Exercise extends Model
 {
-
+    
     protected $perPage = 20;
 
     /**
@@ -14,15 +28,15 @@ class Exercise extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['exercises_img', 'name', 'description', 'times_completed', 'user_id'];
+    protected $fillable = ['exercise_photo_url', 'name', 'description'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function performances()
     {
-        return $this->hasMany(Performance::class);
+        return $this->hasMany(\App\Models\Performance::class, 'id', 'exercise_id');
     }
-
+    
 }
