@@ -8,10 +8,10 @@ use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
-Route::get('/test', function () {
-    return view('auth/logsys');
+Route::get('/login', function () {
+    return view('auth/login');
 });
 
 Route::get('/dashboard', function () {
