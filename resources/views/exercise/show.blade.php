@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-nav-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $exercise->name ?? __('Show') . " " . __('Exercise') }}
@@ -49,4 +49,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-nav-layout>

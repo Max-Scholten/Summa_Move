@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CompletedController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\ProfileController;
@@ -15,6 +15,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::resource('users', UserController::class);
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
 Route::resource('roles', RoleController::class);
 Route :: get ( '/roles' , [RoleController::class, 'index'] ) -> name ( 'roles.index' );
 Route :: get ( '/roles/create' , [RoleController::class, 'create'] ) -> name ( 'roles.create' );
@@ -24,14 +34,6 @@ Route :: get ( '/roles/{role}/edit' , [RoleController::class, 'edit'] ) -> name 
 Route :: put ( '/roles/{role}' , [RoleController::class, 'update'] ) -> name ( 'roles.update' );
 Route :: delete ( '/roles/{role}' , [RoleController::class, 'destroy'] ) -> name ( 'roles.destroy' );
 
-Route::resource('completeds', CompletedController::class);
-Route::get('/completeds', [CompletedController::class, 'index'])->name('completeds.index');
-Route::get('/completeds/create', [CompletedController::class, 'create'])->name('completeds.create');
-Route::post('/completeds', [CompletedController::class, 'store'])->name('completeds.store');
-Route::get('/completeds/{completed}', [CompletedController::class, 'show'])->name('completeds.show');
-Route::get('/completeds/{completed}/edit', [CompletedController::class, 'edit'])->name('completeds.edit');
-Route::put('/completeds/{completed}', [CompletedController::class, 'update'])->name('completeds.update');
-Route::delete('/completeds/{completed}', [CompletedController::class, 'destroy'])->name('completeds.destroy');
 
 Route::resource('exercises', ExerciseController::class);
 Route::get('/exercises', [ExerciseController::class, 'index'])->name('exercises.index');

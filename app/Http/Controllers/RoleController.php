@@ -17,9 +17,10 @@ class RoleController extends Controller
      */
     public function index(Request $request): View
     {
+        $users = User::all();
         $roles = Role::paginate();
 
-        return view('role.index', compact('roles'))
+        return view('role.index', compact('roles', 'users'))
             ->with('i', ($request->input('page', 1) - 1) * $roles->perPage());
     }
 
@@ -48,13 +49,38 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request, Role $role): View
+//    public function show(Request $request, Role $role): View
+//    {
+//        $user = $request->user(); // Get the currently authenticated user
+//
+//        return view('role.show', compact('role', 'user'));
+//    }
+
+//    public function show(Request $request, Role $role): View
+//    {
+//        $users = User::all()->map(function ($user) use ($role) {
+//            if ($user->role_id == $role->id) {
+//                return $user;
+//            } else {
+//                // Create a placeholder user with blank information
+//                return new User([
+//                    'username' => '',
+//                    'email' => '',
+//                    'first_name' => '',
+//                    'last_name' => '',
+//                ]);
+//            }
+//        });
+//
+//        return view('role.show', compact('role', 'users'));
+//    }
+
+    public function show(Role $role ): View
     {
-        $user = $request->user(); // Get the currently authenticated user
+        $users = User::all(); // Fetch all users from the database
 
-        return view('role.show', compact('role', 'user'));
+        return view('role.show', compact('role', 'users'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -87,6 +113,6 @@ class RoleController extends Controller
         Role::find($id)->delete();
 
         return Redirect::route('roles.index')
-            ->with('success', 'Role deleted successfully');
+            ->with('success', 'Rollen tabel is verwijderd.');
     }
 }

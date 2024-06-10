@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exercise;
 use App\Models\Performance;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,22 +26,29 @@ class PerformanceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create() : View
     {
-        $performance = new Performance();
-
-        return view('performance.create', compact('performance'));
+        $exercises = Exercise::all();
+        return view('performance.create', compact('exercises'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PerformanceRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        Performance::create($request->validated());
+        $request->validate([
+            'times_completed' => 'required',
+            'times_completed_in_time' => 'required',
+            'exercise_id' => 'required|exists:exercises,id',
+            // other validation rules...
+        ]);
 
-        return Redirect::route('performances.index')
-            ->with('success', 'Performance created successfully.');
+        $performance = new Performance($request->all());
+        $performance->user_id = auth()->id(); // Set the user_id to the ID of the currently authenticated user
+        $performance->save();
+
+        return redirect()->route('performances.index');
     }
 
     /**
@@ -56,11 +64,10 @@ class PerformanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id): View
+    public function edit(Performance $performance)
     {
-        $performance = Performance::find($id);
-
-        return view('performance.edit', compact('performance'));
+        $exercises = Exercise::all();
+        return view('performance.edit', compact('performance', 'exercises'));
     }
 
     /**

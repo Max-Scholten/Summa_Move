@@ -31,18 +31,11 @@ class Role extends Model
      */
     protected $fillable = ['rolename', 'user_id'];
 
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_role', 'role_id', 'user_id');
