@@ -16,7 +16,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen min-w-screen bg-gray-100 dark:bg-gray-900">
+<body class="h-fill min-w-screen bg-gray-100 dark:bg-gray-900">
     <!-- #region website navigation bar  -->
         <!-- #region Script to set active button -->
         <script>
@@ -86,8 +86,12 @@
     <!-- #endregion -->
 
     <!-- Page Content -->
-    <main class="ml-[300px] p-0 mt-14">
-        {{ $slot }}
+    <main class="grid grid-cols-[1fr_5fr_0.5fr] h-screen">
+        <div class="col-start-2 row-start-2 h-full py-6 overflow-y-hidden rounded-2xl overflow-hidden ">
+            <div class="h-full overflow-hidden overflow-y-auto rounded-2xl">
+                {{ $slot }}
+            </div>
+        </div>
     </main>
 </body>
 

@@ -29,9 +29,12 @@
         </header>
         @endisset
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
+        <main class="grid grid-cols-[1fr_5fr_0.5fr] h-screen">
+            <div class="col-start-2 row-start-2 h-full py-6 overflow-y-hidden rounded-2xl overflow-hidden ">
+                <div class="h-full overflow-hidden overflow-y-auto rounded-2xl">
+                    {{ $slot }}
+                </div>
+            </div>
         </main>
         <!-- #region Script to set active button -->
         <script>
