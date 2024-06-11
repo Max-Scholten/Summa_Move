@@ -33,12 +33,12 @@
         }
     </script>
     <!-- #endregion -->
-    <div class="bg-black bg-opacity-50 rounded-md overflow-hidden col-start-2 row-start-2 grid grid-rows-[3fr_1fr]">
+    <div class="bg-black bg-opacity-50 rounded-md overflow-hidden col-start-2 row-start-2 grid grid-rows-[2fr_1fr] h-[calc(700px)]">
         <div id="loginDiv" class="row-start-1 grid grid-rows-1" style="width: 200%;">
             <!-- #region login -->
             <div class=" h-full row-start-1 overflow-hidden">
-                <div class="grid grid-cols-1 grid-rows-[1fr_6fr] h-full p-4">
-                    <h2 class="text-4xl font-semibold mb-2 text-white">Login</h2>
+                <div class="grid grid-cols-1 grid-rows-[0.5fr_6fr] h-full p-4">
+                    <h2 class="text-4xl font-semibold mb-4 text-white">Login</h2>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-4">
@@ -61,7 +61,7 @@
                             @enderror
                         </div>
 
-                        <div class="mt-10">
+                        <div class="mt-6">
                             <button type="submit" class="w-full max-w-[411px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 Log In
                             </button>
@@ -72,25 +72,39 @@
             <!-- #endregion -->
             <!-- #region register -->
             <div class="h-full w-full translate-right row-start-1">
-                <div class="grid grid-cols-1 grid-rows-[1fr_6fr] h-full p-4">
-                    <h2 class="text-4xl font-semibold mb-1 text-white">Register</h2>
+                <div class="grid grid-cols-1 grid-rows-[0.5fr_6fr] h-full p-4">
+                    <h2 class="text-4xl font-semibold mb-4 mt-1 text-white">Register</h2>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        <!-- Name -->
-                        <div>
-                            <x-input-label for="name" :value="__('Name')" />
-                            <x-text-input id="name" class="max-w-[411px] block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                        <!-- Username -->
+                        <div class="mb-4">
+                            <x-input-label for="username" :value="__('Username')" />
+                            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autocomplete="username" />
+                            <x-input-error :messages="$errors->get('username')" class="mt-2"/>
+                        </div>
+
+                        <!-- First Name -->
+                        <div class="mb-4">
+                            <x-input-label for="first_name" :value="__('First Name')" />
+                            <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autocomplete="first_name" />
+                            <x-input-error :messages="$errors->get('first_name')" class="mt-2"/>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="mb-4">
+                            <x-input-label for="last_name" :value="__('Last Name')" />
+                            <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autocomplete="last_name" />
+                            <x-input-error :messages="$errors->get('last_name')" class="mt-2"/>
                         </div>
 
                         <!-- Email Address -->
-                        <div class="mt-3">
+                        <div class="mb-4">
                             <x-input-label for="email" :value="__('Email')" />
                             <x-text-input id="email" class="max-w-[411px] block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
                         </div>
 
                         <!-- Password -->
-                        <div class="mt-3">
+                        <div class="mb-4">
                             <x-input-label for="password" :value="__('Password')" />
 
                             <x-text-input id="password" class="max-w-[411px] block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
@@ -99,7 +113,7 @@
                         </div>
 
                         <!-- Confirm Password -->
-                        <div class="mt-3">
+                        <div class="mb-4">
                             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
                             <x-text-input id="password_confirmation" class="max-w-[411px] block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
@@ -108,7 +122,7 @@
                         </div>
 
                         <!-- Register Button -->
-                        <x-primary-button class="max-w-[411px] mt-10 w-full h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center">
+                        <x-primary-button class="max-w-[411px] mt-2 mb-0 w-full h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center">
                             {{ __('Register') }}
                         </x-primary-button>
                     </form>

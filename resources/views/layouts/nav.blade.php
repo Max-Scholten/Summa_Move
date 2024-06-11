@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<!-- TODO -->
+<!-- scrollbar in the table instead of next to the table -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +17,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="h-fill min-w-screen bg-gray-100 dark:bg-gray-900">
+<body class="h-fill min-w-screen bg-gray-100 ">
     <!-- #region website navigation bar  -->
         <!-- #region Script to set active button -->
         <script>
@@ -86,9 +87,9 @@
     <!-- #endregion -->
 
     <!-- Page Content -->
-    <main class="grid grid-cols-[1fr_5fr_0.5fr] h-screen">
-        <div class="col-start-2 row-start-2 h-full py-6 overflow-y-hidden rounded-2xl overflow-hidden ">
-            <div class="h-full overflow-hidden overflow-y-auto rounded-2xl">
+    <main class="grid grid-cols-[1fr_5fr_0.5fr] h-screen py-8">
+        <div class="col-start-2 row-start-2 overflow-hidden rounded-2xl">
+            <div class="h-fit rounded-2xl bg-white">
                 {{ $slot }}
             </div>
         </div>
