@@ -28,8 +28,9 @@ class PerformanceController extends Controller
      */
     public function create() : View
     {
+        $performance = new Performance; // Create a new instance of Performance
         $exercises = Exercise::all();
-        return view('performance.create', compact('exercises'));
+        return view('performance.create', compact('exercises', 'performance'));
     }
 
     /**
