@@ -20,6 +20,6 @@
     @endif
 
     <div class="flex items-center gap-4">
-        <x-primary-button>Submit</x-primary-button>
+        <x-primary-button>Indienen</x-primary-button>
     </div>
 </div>
