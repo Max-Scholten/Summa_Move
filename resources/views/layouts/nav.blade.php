@@ -17,7 +17,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="h-fill min-w-screen bg-gray-100 ">
+<body class="h-fill min-w-screen bg-white ">
     <!-- #region website navigation bar  -->
         <!-- #region Script to set active button -->
         <script>
@@ -88,7 +88,7 @@
 
     <!-- Page Content -->
     <main class="grid grid-cols-[1fr_5fr_0.5fr] h-screen py-8">
-        <div class="col-start-2 row-start-2 overflow-hidden rounded-2xl">
+        <div class="col-start-2 overflow-hidden rounded-2xl">
             <div class="h-fit rounded-2xl bg-white">
                 {{ $slot }}
             </div>

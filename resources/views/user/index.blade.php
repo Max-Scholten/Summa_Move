@@ -7,9 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="w-full">
-                    <div class="sm:flex sm:items-center">
+            <div class=" bg-white shadow rounded-2xl border-2 border-black">
+                <div class="w-full h-[85vh] pb-4">
+                    <div class="p-4 sm:flex sm:items-center border-b-2 border-black pb-3"></div>
                         <div class="sm:flex-auto">
                             <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Users') }}</h1>
                             <p class="mt-2 text-sm text-gray-700">A list of all the {{ __('Users') }}.</p>
@@ -18,7 +18,7 @@
                             <a type="button" href="{{ route('users.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add new</a>
                         </div>
                     </div>
-                    <div class="overflow-y-auto">
+                    <div class="px-2 max-h-[calc(800px)] h-[90%] overflow-y-auto">
                         @foreach($users as $user)
                             <div class="flow-root">
                                 <div class="mt-8 overflow-x-auto">
@@ -60,4 +60,5 @@
             </div>
         </div>
     </div>
+
 </x-nav-layout>
