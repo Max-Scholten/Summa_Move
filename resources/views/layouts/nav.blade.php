@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!-- TODO -->
+<!-- scrollbar in the table instead of next to the table -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,67 +16,84 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class=bg-white>
-<div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-    <!-- Page Content -->
-    <main class="ml-[300px] p-4 mt-14">
-        {{ $slot }}
-    </main>
-    <div class="z-40 sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[180px] overflow-y-auto text-center bg-[#166696]">
-        <div class="text-gray-100 text-xl">
-            <div class="p-2.5 mt-1 bg-bg-green-800 flex items-center">
-                    <img src="{{ asset('images/SummaMove-removebg-preview.png') }}" alt="Summa Move Logo" class="object-left h-full"/>
-                <i
-                    class="bi bi-x cursor-pointer ml-28 lg:hidden"
-                ></i>
-            </div>
-            <div class="my-2 bg-gray-600 h-[1px]"></div>
-        </div>
 
-        <div class="p-2.5 mt-3 flex items-center rounded-md px-4 cursor-pointer hover:bg-Forestgreen text-white">
-            <i class="bi bi-house-door-fill"></i>
-            <i class='bx bxs-home'></i>
-            <a href="/roles" class="text-[15px] ml-4 h-6 text-gray-200 font-bold">Role</a>
-        </div>
-        <br>
-        <br>
-        <div class="p-2.5 mt-3 flex items-center rounded-md px-4 cursor-pointer hover:bg-Forestgreen text-white">
-            <i class="bi bi-house-door-fill"></i>
-            <i class='bx bx-food-menu' ></i>
-            <a href="/exercises" class="text-[15px] ml-4 h-6 text-gray-200 font-bold">Exercise</a>
-        </div>
-        <br>
-        <br>
-        <div class="p-2.5 mt-3 flex items-center rounded-md px-4 cursor-pointer hover:bg-Forestgreen text-white">
-            <i class="bi bi-house-door-fill"></i>
-            <i class='bx bx-group' ></i>
-            <a href="/performances" class="text-[15px] ml-4 h-6 text-gray-200 font-bold">Performance</a>
-        </div>
-        <br>
-        <br>
-        <div class="p-2.5 mt-3 flex items-center rounded-md px-4 cursor-pointer hover:bg-Forestgreen text-white">
-            <i class="bi bi-house-door-fill"></i>
-            <i class='bx bx-food-menu' ></i>
-            <a href="/profile" class="text-[15px] ml-4 h-6 text-gray-200 font-bold">Profiel</a>
-        </div>
-        <br>
-        <br>
-        <div class="p-2.5 mt-3 flex items-center rounded-md px-4 cursor-pointer hover:bg-Forestgreen text-white">
-            <i class="bi bi-house-door-fill"></i>
-            <i class='bx bx-group' ></i>
-            <form method="POST" action="{{ route('logout') }} ">
+<body class="h-fill min-w-screen bg-white ">
+    <!-- #region website navigation bar  -->
+        <!-- #region Script to set active button -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const path = window.location.pathname;
+                let activeButton = '';
+
+                if (path.startsWith('/roles')) {
+                    activeButton = 'roles';
+                } else if (path.startsWith('/exercises')) {
+                    activeButton = 'exercises';
+                } else if (path.startsWith('/performances')) {
+                    activeButton = 'performances';
+                } else if (path.startsWith('/profile')) {
+                    activeButton = 'profile';
+                }
+
+                if (activeButton) {
+                    document.querySelectorAll('.nav-item').forEach(item => {
+                        if (item.dataset.active === activeButton) {
+                            item.classList.add('bg-[#5eb1ff]');
+                        }
+                    });
+                }
+            });
+        </script>
+        <!-- #endregion -->
+        <nav class="z-40 sidebar fixed top-0 bottom-0 lg:left-0 overflow-y-auto text-center bg-[#166696] grid grid-rows-6">
+            <!-- nav logo -->
+            <button class="aspect-square border-b-2 border-gray-700">
+                <img src="{{ asset('images/SummaMove-removebg-preview.png') }}" alt="Summa Move Logo" class="center h-fit w-fit" />
+            </button>
+            <!-- nav roles -->
+            <a href="/roles" class="nav-item aspect-square hover:bg-[#5eb1ff] border-b-2 border-gray-700" data-active="roles">
+                <div class="inline-flex w-full h-full p-7">
+                    <img src="{{ asset('images/roles.png') }}" alt="roles" />
+                </div>
+            </a>
+            <!-- nav exercises -->
+            <a href="/exercises" class="nav-item aspect-square hover:bg-[#5eb1ff] border-b-2 border-gray-700" data-active="exercises">
+                <div class="inline-flex w-full h-full p-7">
+                    <img src="{{ asset('images/exercise.png') }}" alt="exercise" />
+                </div>
+            </a>
+            <!-- nav performance -->
+            <a href="/performances" class="nav-item aspect-square hover:bg-[#5eb1ff] border-b-2 border-gray-700" data-active="performances">
+                <div class="inline-flex w-full h-full p-7">
+                    <img src="{{ asset('images/performance.png') }}" alt="performance" />
+                </div>
+            </a>
+            <!-- nav user settings -->
+            <a href="/profile" class="nav-item aspect-square hover:bg-[#5eb1ff] border-b-2 border-gray-700" data-active="profile">
+                <div class="inline-flex w-full h-full p-7">
+                    <img src="{{ asset('images/usersettings.png') }}" alt="user settings" />
+                </div>
+            </a>
+            <!-- nav logout -->
+            <form method="POST" action="{{ route('logout') }}" class="aspect-square border-b-2 border-gray-700">
                 @csrf
-
-                <x-dropdown-link :href="route('logout')"
-                                 onclick="event.preventDefault();
-                            this.closest('form').submit();"
-                                 class="text-[15px] font-bold text-white hover:bg-transparent hover:text-white">
-                    {{ __('Log Out') }}
-                </x-dropdown-link>
+                <button type="submit" class="w-full h-full hover:bg-red-400 text-[15px] font-bold text-white">
+                    <div class="inline-flex">
+                        <img src="{{ asset('images/logout.png') }}" alt="logout" />
+                    </div>
+                </button>
             </form>
-        </div>
+        </nav>
+    <!-- #endregion -->
 
-    </div>
-</div>
+    <!-- Page Content -->
+    <main class="grid grid-cols-[1fr_5fr_0.5fr] h-screen py-8">
+        <div class="col-start-2 overflow-hidden rounded-2xl">
+            <div class="h-fit rounded-2xl bg-white">
+                {{ $slot }}
+            </div>
+        </div>
+    </main>
 </body>
+
 </html>
