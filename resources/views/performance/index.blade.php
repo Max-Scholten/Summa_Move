@@ -18,7 +18,7 @@
                             <a type="button" href="{{ route('performances.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add new</a>
                         </div>
                     </div>
-                    <div class="px-2 max-h-[calc(800px)] h-[90%] overflow-y-scroll">
+                    <div class="px-2 max-h-[calc(800px)] h-[91.2%] overflow-y-scroll dataContainer">
                         <div class="flow-root">
                             <div class="overflow-x-auto">
                                 <div class="inline-block min-w-full py-2 align-middle">

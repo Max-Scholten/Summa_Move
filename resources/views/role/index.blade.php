@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <!-- #region Tables -->
-                        <div class=" px-2 max-h-[calc(800px)] h-[90%] overflow-y-scroll">
+                        <div class=" px-2 max-h-[calc(800px)] h-[91.2%] overflow-y-scroll dataContainer">
                             @foreach($roles->take(4) as $key => $role)
                                 <div class="flow-root">
                                     <div class="mb-8 overflow-x-auto">

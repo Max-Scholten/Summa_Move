@@ -19,7 +19,7 @@
                         </div>
                     </div>
 
-                    <div class="px-2 max-h-[calc(800px)] h-[90%] overflow-y-scroll">
+                    <div class="px-2 max-h-[calc(800px)] h-[91.2%] overflow-y-scroll dataContainer">
                         <div class="flow-root">
                             <div class="mb-8 overflow-x-auto">
                                 <div class="inline-block min-w-full py-2 align-middle">

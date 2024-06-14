@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.dataContainer::-webkit-scrollbar {
+    width: 10px;
+}.dataContainer::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    border-bottom-right-radius: 10px;
+    width: 5px;
+    border-left: black 2px solid ;
+    background-color: #5eb1ff;
+}.dataContainer::-webkit-scrollbar-track {
+    background-color: rgb(68, 68, 68);
+    border-bottom-right-radius: 10px;
+}
+
+
 /* #region login switch */
 #checkboxInput {
     display: none;
@@ -77,3 +91,4 @@
     transform: translateX(100%);
   }
 /* #endregion */
+

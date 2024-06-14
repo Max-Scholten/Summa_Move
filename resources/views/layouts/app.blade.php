@@ -18,8 +18,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-      
+    <div class=" bg-white">
         <!-- Page Heading -->
         @isset($header)
         <header class="bg-white dark:bg-gray-800 shadow">
@@ -30,8 +29,8 @@
         @endisset
 
         <main class="grid grid-cols-[1fr_5fr_0.5fr] h-screen">
-            <div class="col-start-2 row-start-2 h-full py-6 overflow-y-hidden rounded-2xl overflow-hidden ">
-                <div class="h-full overflow-hidden overflow-y-auto rounded-2xl">
+            <div class="col-start-2 row-start-2 h-full py-6 rounded-2xl ">
+                <div class="h-full overflow-y-auto rounded-2xl">
                     {{ $slot }}
                 </div>
             </div>
